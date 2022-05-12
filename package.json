@@ -1,0 +1,23 @@
+{
+  "name": "apitest",
+  "version": "1.0.0",
+  "description": "API de Teste da aula",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js -e js,json,html,ejs",
+    "swagger-autogen": "node swagger.js"
+  },
+  "author": "Marcio Cezar",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.7",
+    "express": "^4.17.3",
+    "http": "^0.0.1-security",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "reload": "^3.2.0",
+    "swagger-autogen": "^2.21.1",
+    "swagger-ui-express": "^4.3.0"
+  }
+}

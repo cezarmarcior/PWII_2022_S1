@@ -1,0 +1,15 @@
+{
+    "mysql":{
+        "banco-de-dados": "teste",
+        "usuario": "root",
+        "senha": "root",
+        "host": "localhost",
+        "port": 8889
+
+    },
+    "api": {
+        "porta":8090,
+        "msg": "Site em execução",
+        "caminho" :"http://localhost"
+    }
+}

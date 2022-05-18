@@ -10,10 +10,15 @@ router.get(
 );
 
 router.post( // C  - Create
-    "/post",(request,response)=>{
-        response.send("Resposta Post executada!!!!!!!");
+    "/post",async (request,response)=>{
+        const dados = await db.insertTb(request.body);
+        console.log(request.body);
+        response.send(
+            JSON.stringify(dados)
+        )
     }
 );
+
 router.get(   //R - Read
     "/get", async (request,response)=>{
         const dados = await db.selectTb();

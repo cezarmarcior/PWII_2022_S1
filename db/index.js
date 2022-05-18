@@ -47,4 +47,30 @@ async function selectWhereTb(ids){
     }
 }
 
-module.exports = { selectTb, selectWhereTb }
+function isEmpty(obj) {
+    for(var prop in obj) {
+      if(obj.hasOwnProperty(prop))
+        return false;
+    }
+    return true;
+}
+
+async function insertTb(dados){
+    try {
+        if(isEmpty(dados)) {
+            return ['Dados nulos, erro ao inserir'];
+        }
+        else {
+            const conn = await connect();
+            const query = 
+            'insert into tb_tes (ids, nome) values (?, ?)';
+            const values = [dados.ids, dados.nome];
+            await conn.query(query, values);
+            return ['Dados inseridos com sucesso'];
+        }
+    } catch (erro) {
+        return erro;
+    }
+}
+
+module.exports = { selectTb, selectWhereTb, insertTb }

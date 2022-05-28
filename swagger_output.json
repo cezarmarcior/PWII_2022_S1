@@ -73,10 +73,17 @@
         }
       }
     },
-    "/delete": {
+    "/delete/{ids}": {
       "delete": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

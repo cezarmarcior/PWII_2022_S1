@@ -39,13 +39,19 @@ router.get(    // R - Read with where
     }
 );
 router.put( // U - Update
-    "/put",(request,response)=>{
-        response.send("Resposta Put executada!!!!!!!");
+    "/put",async (request,response)=>{
+        const result = await db.updateTb(request.body);
+        response.send(
+            JSON.stringify(result)
+        );
     }
 );
 router.delete( // D - Delete
-    "/delete",(request,response)=>{
-        response.send("Resposta Delete executada!!!!!!!");
+    "/delete/:ids",async (request,response)=>{
+        const result = await db.deleteWhereTB(request.params.ids);
+        response.send(
+            JSON.stringify(result)
+        );
     }
 );
 

@@ -73,4 +73,33 @@ async function insertTb(dados){
     }
 }
 
-module.exports = { selectTb, selectWhereTb, insertTb }
+async function deleteWhereTB(ids){
+    try {
+        const conn = await connect();
+        const [rows] = await 
+           conn.query('SELECT * FROM teste.tb_tes where ids=?', ids);
+            let final = [];
+            if (rows.length === 0)
+                final = ['Nenhum registro encontrado'];
+            else {
+                conn.query('DELETE FROM teste.tb_tes where ids=?', ids);
+                final = [`O registro ${ids} foi excluido com sucesso`];
+            }
+        return await final;
+    } catch (erro) {
+        return erro;
+    }
+}
+
+async function updateTb(tb) {
+    try {
+        const conn = await connect();
+        const query = 
+            "update teste.tb_tes set ids=?, nome=? where ids=?;";
+        const change = [tb.idsNew, tb.nome, tb.ids];
+        await conn.query(query, change);
+    } catch (erro) {
+        return erro;
+    }
+}
+module.exports = { selectTb, selectWhereTb, insertTb, deleteWhereTB, updateTb }
